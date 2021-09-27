@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useEffect, useCallback } from "react";
 
 import Tasks from "./components/Tasks/Tasks";
@@ -19,9 +21,12 @@ function App() {
 
   const { isLoading, error, sendRequest: fetchTasks } = useHttp(transformTasks);
   useEffect(() => {
-    fetchTasks({
-      url: "https://react-http-f35bb-default-rtdb.firebaseio.com/tasks.json",
-    });
+    fetchTasks(
+      {
+        url: "https://react-http-f35bb-default-rtdb.firebaseio.com/tasks.json",
+      },
+      transformTasks
+    );
   }, []);
 
   const taskAddHandler = (task) => {
